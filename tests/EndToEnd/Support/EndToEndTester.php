@@ -31,12 +31,12 @@ class EndToEndTester extends \Codeception\Actor {
 	}
 
 	public function getProductPageSlug(): string {
-		return $_ENV['WORDPRESS_PRODUCT_PAGE_SLUG'] ?? 'products';
+		return $_ENV['WORDPRESS_PRODUCT_PAGE_SLUG'] ?? 'product';
 	}
 
 	public function amOnSomeProductPage() {
 		$this->amOnAdminProductPage();
-		$productName = $this->grabTextFrom( 'td.name a' );
+		$productName = $this->grabTextFrom( 'td.column-name a.row-title' );
 
 		$this->amOnPage( $this->getProductPageSlug() . '/' . $productName );
 	}
@@ -56,27 +56,28 @@ class EndToEndTester extends \Codeception\Actor {
 	}
 
 	public function amOnOrderPage() {
-		$this->amOnPage( 'checkout' );
+		$this->amOnPage( '/checkout' );
+		$this->waitForElement('#shipping-first_name');
 	}
 
 	public function fillOrderInformation() {
-		if ( $this->grabValueFrom( '#billing-first_name' ) === '' ) {
-			$this->fillField( '#billing-first_name', 'Bruce' );
+		if ( $this->grabValueFrom( '#shipping-first_name' ) === '' ) {
+			$this->fillField( '#shipping-first_name', 'Bruce' );
 		}
-		if ( $this->grabValueFrom( '#billing-last_name' ) === '' ) {
-			$this->fillField( '#billing-last_name', 'Wayne' );
+		if ( $this->grabValueFrom( '#shipping-last_name' ) === '' ) {
+			$this->fillField( '#shipping-last_name', 'Wayne' );
 		}
-		if ( $this->grabValueFrom( '#billing-address_1' ) === '' ) {
-			$this->fillField( '#billing-address_1', 'Dark Knight 1/2' );
+		if ( $this->grabValueFrom( '#shipping-address_1' ) === '' ) {
+			$this->fillField( '#shipping-address_1', 'Dark Knight 1/2' );
 		}
-		if ( $this->grabValueFrom( '#billing-city' ) === '' ) {
-			$this->fillField( '#billing-city', 'Gotham City' );
+		if ( $this->grabValueFrom( '#shipping-city' ) === '' ) {
+			$this->fillField( '#shipping-city', 'Gotham City' );
 		}
-		if ( $this->grabValueFrom( '#billing-postcode' ) === '' ) {
-			$this->fillField( '#billing-postcode', '12345' );
+		if ( $this->grabValueFrom( '#shipping-postcode' ) === '' ) {
+			$this->fillField( '#shipping-postcode', '12345' );
 		}
-		if ( $this->grabValueFrom( '#billing-phone' ) === '' ) {
-			$this->fillField( '#billing-phone', '12345' );
+		if ( $this->grabValueFrom( '#shipping-phone' ) === '' ) {
+			$this->fillField( '#shipping-phone', '12345' );
 		}
 	}
 

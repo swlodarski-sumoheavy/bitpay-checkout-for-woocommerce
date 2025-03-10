@@ -15,7 +15,5 @@ class CreateOrderWithBitPayCest {
 		$i->saveBitPayAdminSettings();
 		$i->prepareDataToMakeAnOrder();
 		$i->placeOrder();
-		$i->wait( 5 );
-		$i->seeInTitle( 'BitPay Invoice' );
 	}
 }

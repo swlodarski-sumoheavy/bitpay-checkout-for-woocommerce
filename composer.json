@@ -19,7 +19,9 @@
     "yoast/phpunit-polyfills": "^2.0"
   },
   "autoload": {
-    "classmap": ["BitPayLib"]
+    "classmap": [
+      "BitPayLib"
+    ]
   },
   "autoload-dev": {
     "psr-4": {
@@ -40,6 +42,9 @@
     ],
     "phpcbf": [
       "./vendor/bin/phpcbf BitPayLib"
+    ],
+    "test": [
+      "./vendor/bin/phpunit -c phpunit.xml.dist"
     ],
     "test:codeception": [
       "./vendor/bin/codecept run"
