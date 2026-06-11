@@ -10,7 +10,7 @@
 #   exit 1
 # fi
 
-VERSION=$1
+# VERSION=$1
 # VERSION=${GITHUB_REF#refs/tags/} # refs/tags/1.0.0 -> v1.0.0
 
 SVN_URL="https://plugins.svn.wordpress.org/${SLUG}/"
