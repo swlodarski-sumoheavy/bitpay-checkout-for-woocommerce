@@ -19,6 +19,7 @@ on:
 
 jobs:
   release:
+    name: Release ${{ inputs.version }}
     runs-on: ubuntu-24.04
     permissions: write-all
     outputs:
